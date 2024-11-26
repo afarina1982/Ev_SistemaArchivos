@@ -1,0 +1,8 @@
+services:
+  mongo:
+    image: mongo:${VERSION_DB}
+    ports:
+      - "27017:${PUERTO_DB}"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${USUARIO_DB}
+      MONGO_INITDB_ROOT_PASSWORD: ${CLAVE_DB}

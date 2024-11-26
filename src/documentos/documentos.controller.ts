@@ -1,14 +1,15 @@
-import { Controller, Post, UploadedFiles, Param, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
+import { Controller, Post, Get, Param, UploadedFiles, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
+import { ApiBody, ApiConsumes, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { ApiConsumes, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { DocumentosService } from './documentos.service';
+import { DocumentoDto } from './documento.dto'; // Importa el DTO
 
 @ApiTags('documentos')
 @Controller('documentos')
 export class DocumentosController {
   constructor(private readonly documentosService: DocumentosService) {}
 
+  // Endpoint para cargar documentos
   @Post(':rut_usuario')
   @UseInterceptors(FilesInterceptor('archivos'))
   @ApiOperation({ summary: 'Cargar documentos para un usuario' })
@@ -43,5 +44,24 @@ export class DocumentosController {
       mensaje: 'Archivos subidos exitosamente',
       data: resultados,
     };
+  }
+
+  // Endpoint para obtener documentos de un usuario
+  @Get(':rut_usuario')
+  @ApiOperation({ summary: 'Obtener documentos de un usuario' })
+  @ApiParam({ name: 'rut_usuario', description: 'RUT del usuario', type: String })
+  @ApiResponse({ status: 200, description: 'Lista de documentos', type: DocumentoDto, isArray: true })
+  async obtenerDocumentos(@Param('rut_usuario') rutUsuario: string): Promise<DocumentoDto[]> {
+    const documentos = await this.documentosService.obtenerDocumentos(rutUsuario);
+    if (!documentos || documentos.length === 0) {
+      throw new HttpException('No se encontraron documentos', HttpStatus.NOT_FOUND);
+    }
+    return documentos.map(doc => ({
+      rutUsuario: doc.rutUsuario,
+      nombreOriginal: doc.nombreOriginal,
+      nombreAsignado: doc.nombreAsignado,
+      ruta: doc.ruta,
+      fechaCarga: doc.fechaCarga,
+    }));
   }
 }
