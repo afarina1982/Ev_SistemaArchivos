@@ -3,15 +3,32 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import * as path from 'path';
 
 async function bootstrap() {
   // Convertir la aplicación a NestExpressApplication
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // Habilitar archivos estáticos desde "Sistema de Archivos"
-  app.useStaticAssets(join(__dirname, '..', 'Sistema de Archivos'), {
-    prefix: '/archivos', // Prefijo para acceder a los archivos en las URLs públicas
-  });
+ app.useStaticAssets(join(__dirname, '..', 'Sistema de Archivos'), {
+  prefix: '/archivos',
+  setHeaders: (res, filePath) => {
+    const ext = path.extname(filePath).toLowerCase();
+    const mimeTypes = {
+      '.pdf': 'application/pdf',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.png': 'image/png',
+      '.gif': 'image/gif',
+      '.txt': 'text/plain',
+      '.doc': 'application/msword',
+      '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    };
+
+    const mimeType = mimeTypes[ext] || 'application/octet-stream'; // Tipo por defecto
+    res.setHeader('Content-Type', mimeType);
+  },
+});
 
   // Configuración de Swagger
   const config = new DocumentBuilder()

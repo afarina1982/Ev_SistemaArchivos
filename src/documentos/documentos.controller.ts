@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Param, UploadedFiles, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Get, Param, UploadedFiles, UseInterceptors, HttpException, HttpStatus,Delete } from '@nestjs/common';
 import { ApiBody, ApiConsumes, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { DocumentosService } from './documentos.service';
@@ -8,7 +8,7 @@ import { DocumentoDto } from './documento.dto'; // Importa el DTO
 @Controller('documentos')
 export class DocumentosController {
   constructor(private readonly documentosService: DocumentosService) {}
-
+//====================================================================================================
   // Endpoint para cargar documentos
   @Post(':rut_usuario')
   @UseInterceptors(FilesInterceptor('archivos'))
@@ -45,7 +45,7 @@ export class DocumentosController {
       data: resultados,
     };
   }
-
+//====================================================================================================
   // Endpoint para obtener documentos de un usuario
   @Get(':rut_usuario')
   @ApiOperation({ summary: 'Obtener documentos de un usuario' })
@@ -64,4 +64,15 @@ export class DocumentosController {
       fechaCarga: doc.fechaCarga,
     }));
   }
+  //====================================================================================================
+  @Delete(':uuid_archivo')
+  async eliminarDocumento(@Param('uuid_archivo') uuid_archivo: string) {
+    try {
+      const result = await this.documentosService.eliminarDocumento(uuid_archivo);
+      return { message: result };
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
 }
