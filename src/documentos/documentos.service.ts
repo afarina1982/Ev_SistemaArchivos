@@ -35,7 +35,7 @@ export class DocumentosService {
         rutUsuario,
         nombreOriginal: archivo.originalname,
         nombreAsignado,
-        ruta: path.join(subdir, nombreAsignado), // Guardamos la ruta relativa
+        ruta: `archivos/${path.join(subdir, nombreAsignado).replace(/\\/g, '/')}`,
       });
 
       // Guardar el documento en MongoDB
