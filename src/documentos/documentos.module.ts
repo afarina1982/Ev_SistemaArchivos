@@ -6,7 +6,7 @@ import { Documento, DocumentoSchema } from './documento.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Documento', schema: DocumentoSchema }]), // Registrar el modelo Documento
+    MongooseModule.forFeature([{ name: 'Documento', schema: DocumentoSchema }]), 
   ],
   providers: [DocumentosService],
   controllers: [DocumentosController],

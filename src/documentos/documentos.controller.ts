@@ -8,8 +8,8 @@ import { DocumentoDto } from './documento.dto'; // Importa el DTO
 @Controller('documentos')
 export class DocumentosController {
   constructor(private readonly documentosService: DocumentosService) {}
+  
 //====================================================================================================
-  // Endpoint para cargar documentos
   @Post(':rut_usuario')
   @UseInterceptors(FilesInterceptor('archivos'))
   @ApiOperation({ summary: 'Cargar documentos para un usuario' })
@@ -46,7 +46,7 @@ export class DocumentosController {
     };
   }
 //====================================================================================================
-  // Endpoint para obtener documentos de un usuario
+  
   @Get(':rut_usuario')
   @ApiOperation({ summary: 'Obtener documentos de un usuario' })
   @ApiParam({ name: 'rut_usuario', description: 'RUT del usuario', type: String })

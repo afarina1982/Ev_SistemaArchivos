@@ -10,11 +10,14 @@ import { MongooseModule } from '@nestjs/mongoose'; // Importar MongooseModule
     MulterModule.register({
       dest: './uploads', // Ruta temporal para almacenar archivos
     }),
-    MongooseModule.forRoot('mongodb://mongo:clave123@localhost:27017/ArchivosDB'), // Conexión a MongoDB
-    DocumentosModule, // Módulo de documentos
+    MongooseModule.forRoot(
+     // `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`),
+      
+      `mongodb://mongo:clave123@localhost:27017/ArchivosDB`), //para usar de forma local
+      DocumentosModule, // Módulo de documentos
   ],
   controllers: [AppController],
   providers: [AppService],
 
 })
-export class AppModule {}
+export class AppModule { }

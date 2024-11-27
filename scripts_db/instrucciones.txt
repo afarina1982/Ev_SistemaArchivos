@@ -1,0 +1,82 @@
+Instrucciones para configurar el proyecto
+=============================================
+
+En Windows:
+
+1. Abrir VS Code.
+2. Abrir Docker Desktop.
+3. Abrir MongoDB Compass.
+4. En la terminal de VS Code, ir a la ruta del proyecto:
+   cd servicio-documentos
+   Luego, en la ruta \servicio-documentos, ejecutar el siguiente comando:
+   docker-compose up -d mongo
+5. En MongoDB Compass, crear una nueva conexión con "Add new connection".
+6. Verificar que la URI diga:
+   mongodb://mongo@localhost:27017/
+7. Darle un nombre a la conexión.
+8. Ir a Advanced Connection Options y seleccionar Authentication.
+9. En username, escribir "mongo".
+10. En Password, escribir "clave123". Esta información está en el archivo .env del proyecto.
+11. Luego, presionar Save and Connect.
+12. Luego, pinchar en el + de la conexión con el nombre ingresado en el paso 7.
+13. En Database Name, ingresar "ArchivosDB" y en Collection Name ingresar "documentos". Luego, presionar Create Database.
+14. Presionar sobre la base de datos ArchivosDB.
+15. Presionar luego Open MongoDb Shell y copiar este código para dar permisos:
+    db.createUser({
+      user: "mongo",
+      pwd: "clave123",
+      roles: [{ role: "readWrite", db: "ArchivosDB" }]
+    })
+    Y presionar Enter.
+16. Con los permisos listos, presiona … en la conexión y selecciona Desconectar.
+17. Luego, nuevamente presiona … y selecciona Edit connection.
+18. En el cuadro, activa la opción Edit Connection String y luego presiona Confirm.
+19. En la URI, escribe:
+    mongodb://mongo:clave123@localhost:27017/ArchivosDB
+20. En la terminal de VS Code, escribe:
+    docker-compose up -d api
+    Luego, para revisar los logs, escribe:
+    docker-compose logs -f
+    Espera que el proyecto cargue correctamente.
+21. En la barra de direcciones del navegador, escribe:
+    http://localhost:3000/api
+22. Todos los archivos se guardarán en la carpeta "Sistema de Archivos".
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+En Mac o Linux:
+
+1. Abrir VS Code.
+2. Abrir Docker Desktop.
+3. Abrir MongoDB Compass.
+4. En la terminal de VS Code, ir a la ruta del proyecto:
+   cd servicio-documentos
+   Luego, en la ruta \servicio-documentos, ejecutar el siguiente comando:
+   docker-compose up -d
+5. En MongoDB Compass, crear una nueva conexión con "Add new connection".
+6. Verificar que la URI diga:
+   mongodb://mongo@localhost:27017/
+7. Darle un nombre a la conexión.
+8. Ir a Advanced Connection Options y seleccionar Authentication.
+9. En username, escribir "mongo".
+10. En Password, escribir "clave123". Esta información está en el archivo .env del proyecto.
+11. Luego, presionar Save and Connect.
+12. Luego, pinchar en el + de la conexión con el nombre ingresado en el paso 7.
+13. En Database Name, ingresar "ArchivosDB" y en Collection Name ingresar "documentos". Luego, presionar Create Database.
+14. Presionar sobre la base de datos ArchivosDB.
+15. Presionar luego Open MongoDb Shell y copiar este código para dar permisos:
+    db.createUser({
+      user: "mongo",
+      pwd: "clave123",
+      roles: [{ role: "readWrite", db: "ArchivosDB" }]
+    })
+    Y presionar Enter.
+16. Con los permisos listos, presiona … en la conexión y selecciona Desconectar.
+17. Luego, nuevamente presiona … y selecciona Edit connection.
+18. En el cuadro, activa la opción Edit Connection String y luego presiona Confirm.
+19. En la URI, escribe:
+    mongodb://mongo:clave123@localhost:27017/ArchivosDB
+    El proyecto se actualiza automáticamente, ya que funciona correctamente con el comando yarn start:dev.
+20. En la barra de direcciones del navegador, escribe:
+    http://localhost:3000/api
+21. Todos los archivos se guardarán en la carpeta "Sistema de Archivos".

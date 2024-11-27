@@ -1,4 +1,20 @@
 services:
+  api:
+    image: "node:${VERSION_NODE}"
+    command: "yarn start:dev"
+    user: node
+    working_dir: /home/node/nest
+    environment:
+      - PORT=${PUERTO_NEST}
+      - DB_HOST=${RUTA_DB}
+      - DB_PORT=${PUERTO_DB}
+      - DB_USER=${USUARIO_DB}
+      - DB_PASS=${CLAVE_DB}
+      - DB_NAME=${NOMBRE_DB}
+    ports:
+      - "3000:${PUERTO_NEST}"
+    volumes:
+      - .:/home/node/nest
   mongo:
     image: mongo:${VERSION_DB}
     ports:

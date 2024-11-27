@@ -36,7 +36,7 @@ async function bootstrap() {
     .setTitle('Servicio de Documentos')
     .setDescription('API para la gestión y carga de documentos')
     .setVersion('1.0')
-    .addTag('documentos')
+    .addTag('Gestion de Documentos')
     .build();
   const document = SwaggerModule.createDocument(app, config,{
     include:[DocumentosModule],
@@ -45,8 +45,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   // Iniciar el servidor
-  await app.listen(3000);
-  console.log(`API ejecutándose en: http://localhost:3000/api`);
-  console.log(`Archivos accesibles en: http://localhost:3000/archivos`);
+  await app.listen(process.env.PORT || 3000);
+  //console.log(`API ejecutándose en: http://localhost:3000/api`);
+  //console.log(`Archivos accesibles en: http://localhost:3000/archivos`);
 }
 bootstrap();

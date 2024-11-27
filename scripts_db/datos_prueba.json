@@ -1,0 +1,143 @@
+[
+    {
+      "rutUsuario": "12345678-9",
+      "nombreOriginal": "documento1.pdf",
+      "nombreAsignado": "210d0f1f-4a29-4617-a95b-c4e2aec93f1e.pdf",
+      "ruta": "archivos/2024/11/14/18/30/210d0f1f-4a29-4617-a95b-c4e2aec93f1e.pdf",
+      "fechaCarga": "2024-11-14T18:30:00Z"
+    },
+    {
+      "rutUsuario": "23456789-0",
+      "nombreOriginal": "documento2.pdf",
+      "nombreAsignado": "8ebd9ecb-51ab-4557-b2c8-b3aaec20c2a7.pdf",
+      "ruta": "archivos/2024/11/14/18/45/8ebd9ecb-51ab-4557-b2c8-b3aaec20c2a7.pdf",
+      "fechaCarga": "2024-11-14T18:45:00Z"
+    },
+    {
+      "rutUsuario": "34567890-1",
+      "nombreOriginal": "documento3.pdf",
+      "nombreAsignado": "979b0986-4fe3-44f6-8389-e24837647bd5.pdf",
+      "ruta": "archivos/2024/11/14/19/00/979b0986-4fe3-44f6-8389-e24837647bd5.pdf",
+      "fechaCarga": "2024-11-14T19:00:00Z"
+    },
+    {
+      "rutUsuario": "45678901-2",
+      "nombreOriginal": "documento4.pdf",
+      "nombreAsignado": "d2b47f22-b8cd-4567-a741-f8fa635453b8.pdf",
+      "ruta": "archivos/2024/11/14/19/15/d2b47f22-b8cd-4567-a741-f8fa635453b8.pdf",
+      "fechaCarga": "2024-11-14T19:15:00Z"
+    },
+    {
+      "rutUsuario": "56789012-3",
+      "nombreOriginal": "documento5.pdf",
+      "nombreAsignado": "f96ab892-6b0a-4d72-b7a7-b8c8ffac2a64.pdf",
+      "ruta": "archivos/2024/11/14/19/30/f96ab892-6b0a-4d72-b7a7-b8c8ffac2a64.pdf",
+      "fechaCarga": "2024-11-14T19:30:00Z"
+    },
+    {
+      "rutUsuario": "67890123-4",
+      "nombreOriginal": "documento6.pdf",
+      "nombreAsignado": "23a58693-62e7-4310-9393-d882b7cfedb7.pdf",
+      "ruta": "archivos/2024/11/14/19/45/23a58693-62e7-4310-9393-d882b7cfedb7.pdf",
+      "fechaCarga": "2024-11-14T19:45:00Z"
+    },
+    {
+      "rutUsuario": "78901234-5",
+      "nombreOriginal": "documento7.pdf",
+      "nombreAsignado": "9d328f9c-4b65-4a79-8f8b-81a62371f437.pdf",
+      "ruta": "archivos/2024/11/14/20/00/9d328f9c-4b65-4a79-8f8b-81a62371f437.pdf",
+      "fechaCarga": "2024-11-14T20:00:00Z"
+    },
+    {
+      "rutUsuario": "89012345-6",
+      "nombreOriginal": "documento8.pdf",
+      "nombreAsignado": "8fa0d0f8-3920-41cc-a1b6-5f9b47e36f33.pdf",
+      "ruta": "archivos/2024/11/14/20/15/8fa0d0f8-3920-41cc-a1b6-5f9b47e36f33.pdf",
+      "fechaCarga": "2024-11-14T20:15:00Z"
+    },
+    {
+      "rutUsuario": "90123456-7",
+      "nombreOriginal": "documento9.pdf",
+      "nombreAsignado": "6ab0a67f-b67d-4f95-bdcd-bb3a3b702b74.pdf",
+      "ruta": "archivos/2024/11/14/20/30/6ab0a67f-b67d-4f95-bdcd-bb3a3b702b74.pdf",
+      "fechaCarga": "2024-11-14T20:30:00Z"
+    },
+    {
+      "rutUsuario": "01234567-8",
+      "nombreOriginal": "documento10.pdf",
+      "nombreAsignado": "a5f7d881-5353-4027-b9cf-96ed1f8d5e43.pdf",
+      "ruta": "archivos/2024/11/14/20/45/a5f7d881-5353-4027-b9cf-96ed1f8d5e43.pdf",
+      "fechaCarga": "2024-11-14T20:45:00Z"
+    },
+    {
+      "rutUsuario": "12345678-9",
+      "nombreOriginal": "documento11.pdf",
+      "nombreAsignado": "4e9684e0-fd11-41d9-a31c-0cb22c3c6ef2.pdf",
+      "ruta": "archivos/2024/11/14/21/00/4e9684e0-fd11-41d9-a31c-0cb22c3c6ef2.pdf",
+      "fechaCarga": "2024-11-14T21:00:00Z"
+    },
+    {
+      "rutUsuario": "23456789-0",
+      "nombreOriginal": "documento12.pdf",
+      "nombreAsignado": "591e4b6a-0f1a-4698-9c3d-c19e09f4cd3b.pdf",
+      "ruta": "archivos/2024/11/14/21/15/591e4b6a-0f1a-4698-9c3d-c19e09f4cd3b.pdf",
+      "fechaCarga": "2024-11-14T21:15:00Z"
+    },
+    {
+      "rutUsuario": "34567890-1",
+      "nombreOriginal": "documento13.pdf",
+      "nombreAsignado": "2b8e73b4-4eaf-4c3a-9252-b8320dbb4a32.pdf",
+      "ruta": "archivos/2024/11/14/21/30/2b8e73b4-4eaf-4c3a-9252-b8320dbb4a32.pdf",
+      "fechaCarga": "2024-11-14T21:30:00Z"
+    },
+    {
+      "rutUsuario": "45678901-2",
+      "nombreOriginal": "documento14.pdf",
+      "nombreAsignado": "2b56f10e-c929-4184-8ec5-90f6b0f8a745.pdf",
+      "ruta": "archivos/2024/11/14/21/45/2b56f10e-c929-4184-8ec5-90f6b0f8a745.pdf",
+      "fechaCarga": "2024-11-14T21:45:00Z"
+    },
+    {
+      "rutUsuario": "56789012-3",
+      "nombreOriginal": "documento15.pdf",
+      "nombreAsignado": "1cb9edfa-ece7-400b-8fdb-df38e3835db2.pdf",
+      "ruta": "archivos/2024/11/14/22/00/1cb9edfa-ece7-400b-8fdb-df38e3835db2.pdf",
+      "fechaCarga": "2024-11-14T22:00:00Z"
+    },
+    {
+      "rutUsuario": "67890123-4",
+      "nombreOriginal": "documento16.pdf",
+      "nombreAsignado": "4f9d74b8-b6e3-4010-bc34-365978a312d5.pdf",
+      "ruta": "archivos/2024/11/14/22/15/4f9d74b8-b6e3-4010-bc34-365978a312d5.pdf",
+      "fechaCarga": "2024-11-14T22:15:00Z"
+    },
+    {
+      "rutUsuario": "78901234-5",
+      "nombreOriginal": "documento17.pdf",
+      "nombreAsignado": "2c7ff0d1-0f4e-41a5-9839-35e6bfa3a5cb.pdf",
+      "ruta": "archivos/2024/11/14/22/30/2c7ff0d1-0f4e-41a5-9839-35e6bfa3a5cb.pdf",
+      "fechaCarga": "2024-11-14T22:30:00Z"
+    },
+    {
+      "rutUsuario": "89012345-6",
+      "nombreOriginal": "documento18.pdf",
+      "nombreAsignado": "846a6a5d-4d76-4b50-9b1c-0d8d5f9c5577.pdf",
+      "ruta": "archivos/2024/11/14/22/45/846a6a5d-4d76-4b50-9b1c-0d8d5f9c5577.pdf",
+      "fechaCarga": "2024-11-14T22:45:00Z"
+    },
+    {
+      "rutUsuario": "90123456-7",
+      "nombreOriginal": "documento19.pdf",
+      "nombreAsignado": "ad5f3d9c-2891-4eb7-9b10-f9eb5c3018b6.pdf",
+      "ruta": "archivos/2024/11/14/23/00/ad5f3d9c-2891-4eb7-9b10-f9eb5c3018b6.pdf",
+      "fechaCarga": "2024-11-14T23:00:00Z"
+    },
+    {
+      "rutUsuario": "01234567-8",
+      "nombreOriginal": "documento20.pdf",
+      "nombreAsignado": "709bb7f1-4a51-40b0-8d16-957b3c4f2fe4.pdf",
+      "ruta": "archivos/2024/11/14/23/15/709bb7f1-4a51-40b0-8d16-957b3c4f2fe4.pdf",
+      "fechaCarga": "2024-11-14T23:15:00Z"
+    }
+  ]
+  
