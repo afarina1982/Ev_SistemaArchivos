@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as path from 'path';
+import { DocumentosModule } from './documentos/documentos.module';
 
 async function bootstrap() {
   // Convertir la aplicación a NestExpressApplication
@@ -37,7 +38,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('documentos')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config,{
+    include:[DocumentosModule],
+  });
+  
   SwaggerModule.setup('api', app, document);
 
   // Iniciar el servidor
