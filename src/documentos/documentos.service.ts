@@ -12,7 +12,7 @@ export class DocumentosService {
 
   constructor(@InjectModel('Documento') private documentoModel: Model<Documento>) {}
 
-//====================================================================================================
+  //====================================================================================================
   
   async guardarArchivos(rutUsuario: string, archivos: Express.Multer.File[]): Promise<Documento[]> {
     const resultados: Documento[] = [];
@@ -43,41 +43,63 @@ export class DocumentosService {
 
     return resultados;
   }
-//====================================================================================================
+  //====================================================================================================
   
   async obtenerDocumentos(rutUsuario: string): Promise<Documento[]> {
     return this.documentoModel.find({ rutUsuario }).exec(); // Buscar documentos por rutUsuario
   }
 
-//====================================================================================================
+  //====================================================================================================
+  async eliminarDocumento(uuid_archivo: string): Promise<string> {
+    const documento = await this.documentoModel.findOne({ nombreAsignado: uuid_archivo }).exec();
+    
+    if (!documento) {
+      throw new Error('Documento no encontrado');
+    }
 
-async eliminarDocumento(uuid_archivo: string): Promise<string> {
-  const documento = await this.documentoModel.findOne({ nombreAsignado: uuid_archivo }).exec();
-  
-  if (!documento) {
-    throw new Error('Documento no encontrado');
+    const archivoPath = path.join(this.baseDir, documento.ruta.replace('archivos/', ''));
+
+    try {
+      // Eliminar archivo del sistema de archivos
+      await fs.unlink(archivoPath); 
+      console.log(`Archivo ${archivoPath} eliminado exitosamente`);
+
+      // Eliminar el registro en la base de datos
+      await this.documentoModel.deleteOne({ nombreAsignado: uuid_archivo }).exec();
+
+      // Eliminar directorios vacíos, comenzando desde el directorio del archivo
+      const directorio = path.dirname(archivoPath);
+      await this.eliminarDirectoriosVacios(directorio);
+
+      return 'Documento eliminado correctamente';
+    } catch (error) {
+      throw new Error(`Error al eliminar el archivo: ${error.message}`);
+    }
   }
 
-  const archivoPath = path.join(this.baseDir, documento.ruta.replace('archivos/', ''));
+  //====================================================================================================
+  // Función para eliminar directorios vacíos de manera recursiva
+  private async eliminarDirectoriosVacios(directorio: string): Promise<void> {
+    try {
+      const archivos = await fs.readdir(directorio);
 
-  try {
-    await fs.unlink(archivoPath); 
-    console.log(`Archivo ${archivoPath} eliminado exitosamente`);
+      // Si el directorio está vacío, eliminarlo
+      if (archivos.length === 0) {
+        await fs.rmdir(directorio);
+        console.log(`Directorio ${directorio} eliminado porque está vacío`);
 
-    await this.documentoModel.deleteOne({ nombreAsignado: uuid_archivo }).exec();
-
-    const directorio = path.dirname(archivoPath);
-    await this.eliminarDirectorioVacio(directorio);
-
-    return 'Documento eliminado correctamente';
-  } catch (error) {
-    throw new Error(`Error al eliminar el archivo: ${error.message}`);
+        // Llamada recursiva para verificar el directorio superior
+        const directorioPadre = path.dirname(directorio);
+        if (directorioPadre !== this.baseDir) {  // No seguir hacia la raíz del sistema
+          await this.eliminarDirectoriosVacios(directorioPadre);
+        }
+      }
+    } catch (error) {
+      console.error(`Error al verificar el directorio: ${error.message}`);
+    }
   }
-  
-}
 
-//====================================================================================================
-//====================================================================================================
+  //====================================================================================================
   // Función para obtener la ruta del directorio donde se suben los archivos
   private obtenerRutaSubida(): string {
     const ahora = new Date();
@@ -89,19 +111,5 @@ async eliminarDocumento(uuid_archivo: string): Promise<string> {
       String(ahora.getMinutes()).padStart(2, '0'),
     ];
     return path.join(...partes);
-  }
-  //====================================================================================================
-  // Funcion para eliminar directorios vacíos
-  private async eliminarDirectorioVacio(directorio: string): Promise<void> {
-    try {
-      const archivos = await fs.readdir(directorio);
-
-      if (archivos.length === 0) {
-        await fs.rmdir(directorio);
-        console.log(`Directorio ${directorio} eliminado porque está vacío`);
-      }
-    } catch (error) {
-      console.error(`Error al verificar el directorio: ${error.message}`);
-    }
   }
 }
