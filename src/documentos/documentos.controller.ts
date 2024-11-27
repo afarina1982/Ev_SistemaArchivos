@@ -52,21 +52,25 @@ export class DocumentosController {
   @ApiParam({ name: 'rut_usuario', description: 'RUT del usuario', type: String })
   @ApiResponse({ status: 200, description: 'Lista de documentos', type: DocumentoDto, isArray: true })
   async obtenerDocumentos(@Param('rut_usuario') rutUsuario: string): Promise<DocumentoDto[]> {
-    const documentos = await this.documentosService.obtenerDocumentos(rutUsuario);
-    if (!documentos || documentos.length === 0) {
-      throw new HttpException('No se encontraron documentos', HttpStatus.NOT_FOUND);
+    try {
+      const documentos = await this.documentosService.obtenerDocumentos(rutUsuario);
+      if (!documentos || documentos.length === 0) {
+        throw new HttpException('No se encontraron documentos', HttpStatus.NOT_FOUND);
+      }
+      return documentos.map(doc => ({
+        rutUsuario: doc.rutUsuario,
+        nombreOriginal: doc.nombreOriginal,
+        nombreAsignado: doc.nombreAsignado,
+        ruta: doc.ruta,
+        fechaCarga: doc.fechaCarga,
+      }));
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
-    return documentos.map(doc => ({
-      rutUsuario: doc.rutUsuario,
-      nombreOriginal: doc.nombreOriginal,
-      nombreAsignado: doc.nombreAsignado,
-      ruta: doc.ruta,
-      fechaCarga: doc.fechaCarga,
-    }));
   }
   //====================================================================================================
   @Delete(':uuid_archivo')
-  async eliminarDocumento(@Param('uuid_archivo') uuid_archivo: string) {
+  async eliminarDocumento(@Param('Nombre Asignado (UUID)') uuid_archivo: string) {
     try {
       const result = await this.documentosService.eliminarDocumento(uuid_archivo);
       return { message: result };

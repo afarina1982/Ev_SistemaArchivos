@@ -46,7 +46,7 @@ async function bootstrap() {
 
   // Iniciar el servidor
   await app.listen(process.env.PORT || 3000);
-  //console.log(`API ejecutándose en: http://localhost:3000/api`);
-  //console.log(`Archivos accesibles en: http://localhost:3000/archivos`);
+  console.log(`API ejecutándose en: http://localhost:3000/api`);
+  console.log(`Archivos accesibles en: http://localhost:3000/"ruta del archivo"`);
 }
 bootstrap();

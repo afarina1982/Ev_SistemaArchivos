@@ -22,11 +22,13 @@ En Windows:
 13. En Database Name, ingresar "ArchivosDB" y en Collection Name ingresar "documentos". Luego, presionar Create Database.
 14. Presionar sobre la base de datos ArchivosDB.
 15. Presionar luego Open MongoDb Shell y copiar este código para dar permisos:
+
     db.createUser({
       user: "mongo",
       pwd: "clave123",
       roles: [{ role: "readWrite", db: "ArchivosDB" }]
     })
+    
     Y presionar Enter.
 16. Con los permisos listos, presiona … en la conexión y selecciona Desconectar.
 17. Luego, nuevamente presiona … y selecciona Edit connection.
